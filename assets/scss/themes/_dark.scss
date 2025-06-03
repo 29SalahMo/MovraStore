@@ -1,0 +1,93 @@
+/* Dark Theme */
+.dark-mode {
+  --primary-color: #3498db;
+  --secondary-color: #e74c3c;
+  --accent-color: #f1c40f;
+  --text-color: #fff;
+  --light-text: #ccc;
+  --lighter-text: #999;
+  --border-color: #333;
+  --background-color: #1a1a1a;
+  --dark-background: #111;
+  --success-color: #2ecc71;
+  --error-color: #e74c3c;
+  --warning-color: #f1c40f;
+  --info-color: #3498db;
+  
+  .logo {
+    color: var(--accent-color);
+  }
+  
+  .card, 
+  .shop-card,
+  .modal,
+  #cart-drawer,
+  #main-nav.active {
+    background-color: #222;
+  }
+  
+  .shop-card-wishlist,
+  .wishlist-btn {
+    background-color: #333;
+    color: var(--light-text);
+  }
+  
+  .cart-summary,
+  .order-summary,
+  .shop-header,
+  .newsletter {
+    background-color: #222;
+  }
+  
+  .form-control,
+  .form-select {
+    background-color: #222;
+    border-color: #444;
+    color: var(--text-color);
+    
+    &::placeholder {
+      color: var(--lighter-text);
+    }
+  }
+  
+  .quantity-selector {
+    border-color: #444;
+    
+    .quantity-btn {
+      background-color: #222;
+      
+      &:hover {
+        background-color: #333;
+      }
+    }
+  }
+  
+  .btn-outline {
+    &:hover {
+      color: #222;
+    }
+  }
+  
+  .tab-buttons {
+    border-bottom-color: #444;
+  }
+  
+  .instagram {
+    background-color: #222;
+  }
+  
+  .product-attributes th, 
+  .product-attributes td {
+    border-bottom-color: #444;
+  }
+  
+  .review-item,
+  .cart-item,
+  .order-item {
+    border-bottom-color: #444;
+  }
+  
+  .dark-mode-toggle {
+    color: var(--accent-color);
+  }
+} 

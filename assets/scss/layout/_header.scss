@@ -1,0 +1,212 @@
+/* Header */
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba($background-color, 0.95);
+  box-shadow: $shadow-sm;
+  z-index: $z-index-sticky;
+  transition: $transition-base;
+  backdrop-filter: blur(5px);
+  
+  &.scrolled {
+    padding: $spacing-xs 0;
+    box-shadow: $shadow-md;
+    
+    .logo {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md 0;
+  position: relative;
+}
+
+.logo {
+  font-family: $font-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $primary-color;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: $transition-base;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  &:hover {
+    color: $accent-color;
+  }
+  
+  img {
+    height: 40px;
+    width: auto;
+  }
+}
+
+.movra-logo {
+  max-height: 50px;
+  width: auto;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  
+  i, svg {
+    font-size: $font-size-lg;
+    color: $text-color;
+    cursor: pointer;
+    transition: $transition-base;
+    
+    &:hover {
+      color: $accent-color;
+    }
+  }
+  
+  #cart-icon {
+    position: relative;
+    
+    .count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: $secondary-color;
+      color: white;
+      font-size: 10px;
+      font-weight: $font-weight-bold;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.mobile-menu-btn {
+  display: none;
+  font-size: $font-size-xl;
+  color: $text-color;
+  cursor: pointer;
+  transition: $transition-base;
+  
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+/* Search Bar */
+#search-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: $background-color;
+  padding: $spacing-md;
+  box-shadow: $shadow-md;
+  display: none;
+  z-index: 10;
+  
+  &.active {
+    display: block;
+    animation: slideInDown 0.3s ease;
+  }
+  
+  .search-form {
+    display: flex;
+    align-items: center;
+    
+    input {
+      flex: 1;
+      border: none;
+      border-bottom: 2px solid $border-color;
+      padding: $spacing-sm;
+      font-size: $font-size-md;
+      transition: $transition-base;
+      
+      &:focus {
+        border-color: $accent-color;
+        outline: none;
+      }
+    }
+    
+    button {
+      background: none;
+      border: none;
+      color: $accent-color;
+      font-size: $font-size-lg;
+      cursor: pointer;
+      padding: $spacing-sm;
+      
+      &:hover {
+        color: darken($accent-color, 10%);
+      }
+    }
+  }
+}
+
+@include respond-to(md) {
+  #main-header {
+    padding: 0;
+  }
+  
+  .header-container {
+    padding: $spacing-md 0;
+  }
+}
+
+@media (max-width: $breakpoint-md - 1) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  #main-nav {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100vh;
+    background-color: $background-color;
+    box-shadow: $shadow-lg;
+    z-index: $z-index-fixed;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    
+    &.active {
+      left: 0;
+    }
+    
+    ul {
+      padding: $spacing-xl $spacing-md;
+      
+      li {
+        margin-bottom: $spacing-md;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        a {
+          font-size: $font-size-lg;
+          font-weight: $font-weight-medium;
+          color: $text-color;
+          text-decoration: none;
+          transition: $transition-base;
+          
+          &:hover, &.active {
+            color: $accent-color;
+          }
+        }
+      }
+    }
+  }
+} 

@@ -1,0 +1,71 @@
+// Strip unit from a value
+@function strip-unit($value) {
+  @if type-of($value) == 'number' and not unitless($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  @return $value;
+}
+
+// Convert px to rem
+@function rem($pixels, $context: 16) {
+  @return ($pixels / $context) * 1rem;
+}
+
+// Convert px to em
+@function em($pixels, $context: 16) {
+  @return ($pixels / $context) * 1em;
+}
+
+// Color functions
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// Z-index function
+@function z($name) {
+  @if map-has-key($z-layers, $name) {
+    @return map-get($z-layers, $name);
+  }
+  @warn "No z-index found for `#{$name}` in $z-layers map.";
+  @return null;
+}
+
+// Map deep get
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+// Check if a color is light or dark
+@function is-light($color) {
+  $red: red($color);
+  $green: green($color);
+  $blue: blue($color);
+  
+  $brightness: (($red * 299) + ($green * 587) + ($blue * 114)) / 1000;
+  
+  @return $brightness > 128;
+}
+
+// Get contrasting text color based on background
+@function text-contrast($background) {
+  @if is-light($background) {
+    @return $text-color;
+  } @else {
+    @return white;
+  }
+}
+
+// Calculate fluid sizes
+@function fluid-size($min-size, $max-size, $min-width, $max-width) {
+  $slope: ($max-size - $min-size) / ($max-width - $min-width);
+  $y-intercept: $min-size - $slope * $min-width;
+  
+  @return calc(#{$y-intercept} + #{$slope} * 100vw);
+} 

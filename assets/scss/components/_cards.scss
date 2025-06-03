@@ -1,0 +1,213 @@
+/* Cards */
+.card {
+  background-color: $background-color;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  transition: $transition-base;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.card-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: $spacing-lg;
+}
+
+.card-title {
+  font-family: $font-primary;
+  font-size: $font-size-lg;
+  margin-bottom: $spacing-sm;
+}
+
+.card-text {
+  color: $light-text;
+  margin-bottom: $spacing-md;
+}
+
+.card-footer {
+  padding: $spacing-md $spacing-lg;
+  border-top: 1px solid $border-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Product Cards */
+.shop-card {
+  background-color: $background-color;
+  border-radius: $radius-md;
+  overflow: hidden;
+  transition: $transition-base;
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-md;
+    
+    .shop-card-actions {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.shop-card-img {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.shop-card-badge {
+  position: absolute;
+  top: $spacing-sm;
+  left: $spacing-sm;
+  background-color: $secondary-color;
+  color: white;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  z-index: 2;
+}
+
+.shop-card-wishlist {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  background-color: white;
+  color: $text-color;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: $transition-base;
+  z-index: 2;
+  
+  &:hover {
+    color: $secondary-color;
+    transform: scale(1.1);
+  }
+  
+  &.active {
+    color: $secondary-color;
+  }
+}
+
+.shop-card-info {
+  padding: $spacing-md;
+}
+
+.shop-card-category {
+  font-size: $font-size-sm;
+  color: $light-text;
+  margin-bottom: $spacing-xs;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.shop-card-title {
+  font-size: $font-size-lg;
+  font-family: $font-primary;
+  margin-bottom: $spacing-xs;
+  @include truncate;
+}
+
+.shop-card-price {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacing-sm;
+  
+  .current-price {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+  }
+  
+  .original-price {
+    font-size: $font-size-md;
+    color: $light-text;
+    text-decoration: line-through;
+    margin-left: $spacing-sm;
+  }
+}
+
+.shop-card-actions {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+/* Collection Cards */
+.collection-card {
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  height: 400px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+    
+    .collection-overlay {
+      background-color: rgba($primary-color, 0.7);
+    }
+  }
+}
+
+.collection-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($primary-color, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: $spacing-lg;
+  transition: $transition-base;
+  
+  h3 {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-xs;
+  }
+  
+  p {
+    margin-bottom: $spacing-md;
+    opacity: 0.8;
+  }
+} 

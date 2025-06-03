@@ -1,0 +1,23 @@
+{
+  "name": "movra-store",
+  "version": "1.0.0",
+  "description": "Modern e-commerce store for perfumes and cosmetics",
+  "scripts": {
+    "start": "php -S localhost:8000",
+    "watch:sass": "sass --watch assets/scss:assets/css",
+    "build": "npm run build:css",
+    "build:css": "sass assets/scss:assets/css --style compressed"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "swiper": "^10.0.0",
+    "gsap": "^3.12.0",
+    "tippy.js": "^6.3.7"
+  },
+  "devDependencies": {
+    "sass": "^1.63.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "postcss-cli": "^10.1.0"
+  }
+} 

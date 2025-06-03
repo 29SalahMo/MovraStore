@@ -1,0 +1,159 @@
+/* Typography */
+h1, .h1 {
+  font-size: $font-size-xxxl;
+  letter-spacing: -0.5px;
+  
+  @include respond-to(md) {
+    font-size: 3rem;
+  }
+  
+  @include respond-to(lg) {
+    font-size: 3.5rem;
+  }
+}
+
+h2, .h2 {
+  font-size: $font-size-xxl;
+  
+  @include respond-to(md) {
+    font-size: 2.5rem;
+  }
+}
+
+h3, .h3 {
+  font-size: $font-size-xl;
+  
+  @include respond-to(md) {
+    font-size: 1.75rem;
+  }
+}
+
+h4, .h4 {
+  font-size: $font-size-lg;
+}
+
+h5, .h5 {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+}
+
+h6, .h6 {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.lead {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-light;
+  line-height: 1.5;
+  
+  @include respond-to(md) {
+    font-size: 1.25rem;
+  }
+}
+
+.small, small {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+.text-accent {
+  color: $accent-color;
+}
+
+.text-light {
+  color: $light-text;
+}
+
+.text-lighter {
+  color: $lighter-text;
+}
+
+.text-bold {
+  font-weight: $font-weight-bold;
+}
+
+.text-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.text-medium {
+  font-weight: $font-weight-medium;
+}
+
+.text-regular {
+  font-weight: $font-weight-regular;
+}
+
+.text-light-weight {
+  font-weight: $font-weight-light;
+}
+
+.section-title {
+  position: relative;
+  margin-bottom: $spacing-xl;
+  text-align: center;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: $accent-color;
+    margin: $spacing-sm auto 0;
+  }
+  
+  &.left-aligned {
+    text-align: left;
+    
+    &::after {
+      margin-left: 0;
+    }
+  }
+}
+
+blockquote {
+  font-family: $font-primary;
+  font-style: italic;
+  font-size: $font-size-lg;
+  line-height: 1.6;
+  padding: $spacing-md $spacing-lg;
+  margin: $spacing-lg 0;
+  border-left: 4px solid $accent-color;
+  background-color: rgba($accent-color, 0.05);
+  
+  cite {
+    display: block;
+    font-style: normal;
+    font-size: $font-size-sm;
+    margin-top: $spacing-sm;
+    color: $light-text;
+  }
+} 
