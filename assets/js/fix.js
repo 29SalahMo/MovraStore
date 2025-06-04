@@ -14,6 +14,81 @@ document.addEventListener('DOMContentLoaded', function() {
     fixSearch();
     fixLoginSignup();
     fixAboutPage(); // Added about page fix
+    
+    // Fix script for header navigation issues
+    console.log("Fix script loaded");
+    
+    // Make sure the header is visible
+    const header = document.getElementById('main-header');
+    if (header) {
+        console.log("Header found, ensuring visibility");
+        header.style.display = 'block';
+        
+        // Force the nav elements to be visible in non-mobile mode
+        if (window.innerWidth >= 768) {
+            const mainNav = document.getElementById('main-nav');
+            if (mainNav) {
+                mainNav.style.display = 'block';
+                mainNav.style.position = 'relative';
+                mainNav.style.left = 'auto';
+                mainNav.style.right = 'auto';
+            }
+        }
+        
+        // Ensure nav icons are visible
+        const navIcons = document.querySelector('.nav-icons');
+        if (navIcons) {
+            navIcons.style.display = 'flex';
+        }
+    } else {
+        console.error("Header element not found!");
+    }
+    
+    // Fix mobile menu toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const closeBtn = document.querySelector('.mobile-menu-close');
+    const menu = document.getElementById('main-nav');
+    const overlay = document.querySelector('.menu-overlay');
+    
+    if (menuBtn && menu) {
+        console.log("Setting up mobile menu toggle");
+        menuBtn.addEventListener('click', function() {
+            console.log('Mobile menu button clicked');
+            menu.classList.add('active');
+            if (overlay) overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    if (closeBtn && menu) {
+        closeBtn.addEventListener('click', function() {
+            console.log('Mobile menu close button clicked');
+            menu.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    if (overlay && menu) {
+        overlay.addEventListener('click', function() {
+            console.log('Overlay clicked');
+            menu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Force any hidden elements to display
+    setTimeout(function() {
+        if (window.innerWidth >= 768) {
+            document.querySelectorAll('#main-nav, .nav-icons, .logo').forEach(el => {
+                if (getComputedStyle(el).display === 'none') {
+                    console.log(`Forcing display of hidden element: ${el.className || el.id}`);
+                    el.style.display = el.classList.contains('nav-icons') ? 'flex' : 'block';
+                }
+            });
+        }
+    }, 500);
 });
 
 /**

@@ -30,6 +30,42 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Critical CSS for header visibility -->
+    <style>
+        #main-header {
+            display: block !important;
+            z-index: 1050 !important;
+            position: fixed !important;
+            visibility: visible !important;
+        }
+        #main-nav {
+            display: block !important;
+        }
+        .nav-icons {
+            display: flex !important;
+        }
+        @media (max-width: 767px) {
+            #main-nav {
+                display: block !important;
+                position: fixed !important;
+                right: -280px !important;
+            }
+            #main-nav.active {
+                right: 0 !important;
+            }
+        }
+        @media (min-width: 768px) {
+            #main-nav {
+                position: relative !important;
+                right: auto !important;
+                margin-left: auto !important;
+                margin-right: 1.5rem !important;
+                width: auto !important;
+                height: auto !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -53,6 +89,10 @@
                     <li><a href="#giftset" class="nav-link" data-section="giftset">Gift Set</a></li>
                     <li><a href="#about" class="nav-link" data-section="about">About</a></li>
                 </ul>
+                <!-- Add mobile menu close button -->
+                <span class="mobile-menu-close">
+                    <i class="fas fa-times"></i>
+                </span>
             </nav>
             
             <div class="nav-icons">
@@ -65,6 +105,9 @@
             </div>
         </div>
     </header>
+    
+    <!-- Menu Overlay -->
+    <div class="menu-overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -727,5 +770,41 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/fix.js"></script>
+    
+    <!-- Immediate fix for navigation visibility -->
+    <script>
+        // Force header elements to be visible after everything has loaded
+        window.addEventListener('load', function() {
+            // Get the header elements
+            const header = document.getElementById('main-header');
+            const mainNav = document.getElementById('main-nav');
+            const navIcons = document.querySelector('.nav-icons');
+            
+            // Force display for desktop
+            if (window.innerWidth >= 768) {
+                if (header) header.style.display = 'block';
+                if (mainNav) {
+                    mainNav.style.display = 'block';
+                    mainNav.style.position = 'relative';
+                    mainNav.style.right = 'auto';
+                }
+                if (navIcons) navIcons.style.display = 'flex';
+            }
+            
+            // Debug output
+            console.log('Nav visibility:', {
+                header: header ? getComputedStyle(header).display : 'not found',
+                mainNav: mainNav ? getComputedStyle(mainNav).display : 'not found',
+                navIcons: navIcons ? getComputedStyle(navIcons).display : 'not found'
+            });
+            
+            // Force visibility one more time after a delay
+            setTimeout(function() {
+                if (header) header.style.display = 'block';
+                if (mainNav && window.innerWidth >= 768) mainNav.style.display = 'block';
+                if (navIcons) navIcons.style.display = 'flex';
+            }, 1000);
+        });
+    </script>
 </body>
 </html> 

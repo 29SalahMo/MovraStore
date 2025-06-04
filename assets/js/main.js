@@ -3,6 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded - initializing components');
     // Initialize components
     initHeader();
     initMobileMenu();
@@ -32,7 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function initHeader() {
     const header = document.getElementById('main-header');
     
-    if (!header) return;
+    if (!header) {
+        console.error('Header element not found!');
+        return;
+    }
+    console.log('Header initialized successfully');
     
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
@@ -52,9 +57,12 @@ function initMobileMenu() {
     const menu = document.getElementById('main-nav');
     const overlay = document.querySelector('.menu-overlay');
     
+    console.log('Mobile menu elements:', {menuBtn: !!menuBtn, closeBtn: !!closeBtn, menu: !!menu, overlay: !!overlay});
+    
     if (!menuBtn || !menu) return;
     
     menuBtn.addEventListener('click', function() {
+        console.log('Mobile menu button clicked');
         menu.classList.add('active');
         if (overlay) overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
